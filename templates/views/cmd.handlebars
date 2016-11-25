@@ -1,0 +1,13 @@
+<form method="post">
+   
+      参数一：<input type = "text" name="p1"></input>
+	  参数二：<input type = "text" name = "p2"></input>
+      <button id="buttonId" type=submit">Submit</button>
+	  
+</form>
+
+{{#if data}}
+   运行时间：<p>{{data.createdAt}}</p>
+   运行命令：<p>{{data.title}}</p>
+{{/if}}
+       

@@ -4,6 +4,7 @@ var importRoutes = keystone.importer(__dirname);
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
+keystone.pre('render', middleware.theme);
 keystone.pre('render', middleware.flashMessages);
 
 // Import Route Controllers
@@ -15,7 +16,8 @@ var routes = {
 exports = module.exports = function(app) {
 	
 	// Views
-	app.get('/', routes.views.index);
-	app.post('/',routes.views.index);
-	
+	app.get('/',routes.views.home);
+	app.get('/cmd',routes.views.index);
+	app.post('/cmd',routes.views.index);
+	app.get('/d3',routes.views.dataView);
 };

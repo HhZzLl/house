@@ -5,15 +5,17 @@ exports = module.exports = function(req, res,Cmd) {
 	
 	var view = new keystone.View(req, res);
 	var locals = res.locals;
-	
+	   
 	locals.section = 'home';
+	locals.data = {};
 	 
 	view.on('post',function(next){ 
 	    var p1 = req.body.p1;
 	    var p2 =req.body.p2;
+		var p3 =req.body.p3;
 		
 		//执行命令并存到数据库里
-        exec("ls -"+p1+p2, function(error,stdout,stderr){
+        exec("p3 -"+p1+p2, function(error,stdout,stderr){
 			
 			var newcmds = new cmds.model({
 				  title: 'ps ',

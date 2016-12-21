@@ -1,0 +1,82 @@
+extends main
+
+block css
+	link(href="/styles/bootstrap.min.css",rel="stylesheet")
+	style.
+			.timeline:before{
+			 display:block
+			}
+	style.
+			.axis path,
+			.axis line{
+			fill: none;
+			stroke: black;
+			shape-rendering: crispEdges;
+			}
+
+			.axis text {
+			font-family: sans-serif;
+			font-size: 11px;
+			}
+block content
+	.row
+		.col-lg-12
+			h3.page-header 控制台
+	.row
+		.col-lg-3
+			.panel.panel-default
+				ul(class="nav in",id="side-menu")
+					li(class="sidebar-search")
+						div(class="input-group custom-search-form")
+							input(class="form-control")
+							span(class="input-group-btn")
+								button(class="btn btn-default",type="button")
+									i(class="fa fa-search")
+									= "搜索"
+					li
+						a(href="/",class="active",data-toggle="modal" data-target="#modal1")
+							i(class="fa fa-dashboard fa-fw") 
+							= "ps命令运行"
+					li
+						a(href="#")
+							i(class="fa fa-bar-chart-o fa-fw")
+							= " 数据分析"
+							span(class="fa arrow")
+						ul(class="nav nav-second-level collapse")
+							li
+									a(href="/flot")  实时数据
+							li
+									a(href="/morris") 历史数据
+					li
+						a(href="#")
+							i(class="fa fa-table fa-fw")
+							= " 战略措施"
+					li
+						a(href="#")
+							i(class="fa fa-edit fa-fw")
+							= " 推荐其他"
+		.col-lg-9
+			.panel.panel-default
+				.panel-heading
+					i.fa.fa-bell.fa-fw
+					= " 运行参数设定 "
+				.panel-body
+					form(id='runcmdForm',method="post")
+						.form-group
+							label 运行命令
+							input(type='text', name='p3', value='').form-control
+						.form-group
+							label 运行参数一
+							input(type='text', name='p1', value='').form-control
+						.form-group
+							label 运行参数二
+							input(type='text', name='p2', value='').form-control
+						.form-group
+							label 运行结果
+							textarea(rows=3).form-control=locals.data
+						.form-actions
+							button(type='submit', id ='btnRuncmd').btn.btn-primary 开始运行
+block js
+	script(src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js")
+	script(src='/js/lib/bootstrap/dropdown.js')
+	block jsThis

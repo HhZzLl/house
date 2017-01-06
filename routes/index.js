@@ -20,4 +20,7 @@ exports = module.exports = function(app) {
 	app.get('/cmd',routes.views.index);
 	app.post('/cmd',routes.views.index);
 	app.get('/d3',routes.views.dataView);
+	app.get('/eCategory',routes.views.eCategory);
+	app.get('/eCategory/:equipment?',routes.views.eCategory);
+	app.get('/eCategory/equipment/:equipment',routes.views.equipment);
 };

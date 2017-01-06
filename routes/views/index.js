@@ -1,7 +1,7 @@
 var keystone = require('keystone');
 var exec = require('child_process').exec;
 var cmds = keystone.list('cmds');
-exports = module.exports = function(req, res,Cmd) {
+exports = module.exports = function(req, res) {
 	
 	var view = new keystone.View(req, res);
 	var locals = res.locals;

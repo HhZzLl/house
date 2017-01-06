@@ -31,6 +31,10 @@ html
 						a(href="/d3")
 							i(class="fa fa-dashboard fa-fw") 
 							= "数据可视化"
+					li
+						a(href="/eCategory")
+							i(class="fa fa-dashboard fa-fw") 
+							= "固定资产分类管理"
 						//each link in navLinks
 							//li(class=(section === link.key ? 'active' : null)): a(href=link.href)= link.label
 				ul.nav.navbar-nav.navbar-right
@@ -51,14 +55,7 @@ html
 						div(id="sb-search", class="sb-search")
 		.container
 			block content
+			block thisContent
 			block js
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
+				script(src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js")
+				script(src='/js/lib/bootstrap/dropdown.js')

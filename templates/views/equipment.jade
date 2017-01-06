@@ -1,0 +1,44 @@
+extends ./layouts/main
+
+block content
+	.container: .row: .col-md-12
+		article
+			br
+			if	!data.equipment
+				h2 无效固定资产.
+			else
+				header
+					h3= data.equipment.name
+					h5 
+						if data.equipment.purchaseDate
+							| 购入日期：#{data.equipment._.purchaseDate.format('YYYY年M月D日')}
+							br
+						if data.equipment.amount
+							| 数量：#{data.equipment.amount}
+							br
+						if data.equipment.originValue
+							| 原值：#{data.equipment.originValue}
+							br
+						if data.equipment.serverLife
+							| 使用年限：#{data.equipment.serverLife} 
+							br
+						if data.equipment.remainRatio
+							| 残值率：#{data.equipment.remainRatio}
+							br
+						if data.equipment.annualDepreciation
+							| 年折旧额：#{data.equipment.annualDepreciation}
+							br
+						if data.equipment.monthDepreciation
+							|月折旧额：#{data.equipment.monthDepreciation}
+							br
+						if data.equipment.monthDepreciationRatio
+							|月折旧率：#{data.equipment.monthDepreciationRatio}
+							br
+						if data.equipment.accumulatedDepreciation
+							|累计折旧：#{data.equipment.accumulatedDepreciation}
+							br
+						if data.equipment.netValue
+							|净值：#{data.equipment.netValue}
+							br
+						if data.equipment.depreciationMonth
+							|已折旧月份：#{data.equipment.depreciationMonth}

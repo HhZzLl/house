@@ -1,0 +1,46 @@
+extends ./layouts/main
+
+mixin post(ep)
+	.post(data-ks-editable=editable(equipment, { list: 'Equipment' }))
+		h4: a(href='/eCategory/equipment/' + ep.slug)= ep.name
+		
+
+block thisContent
+	.container: .row
+		if data.ecategories.length
+			.col-sm-4.col-md-3
+				h3 目录
+				.list-group(style='margin-top: 20px;')
+					a(href='/eCategory', class=!data.category ? 'active' : false).list-group-item 全部固定资产
+						each cat in data.ecategories
+							a(href='/eCategory/' + cat.key, class=data.category && data.category.id == cat.id ? 'active' : false).list-group-item= cat.name
+		.col-sm-8.col-md-9
+			h3= data.category ? data.category.name : '全部固定资产'
+			br
+			if filters.category && !data.category
+				h3.text-muted 无效分类.
+			else
+				if data.equipments.results.length
+					.blog
+						each ep in data.equipments.results
+							+post(ep)
+					
+					if data.equipments.totalPages > 1
+						ul.pagination
+							if data.equipments.previous
+								li: a(href='?page=' + data.equipments.previous): span.glyphicon.glyphicon-chevron-left
+							else
+								li.disabled: a(href='?page=' + 1): span.glyphicon.glyphicon-chevron-left
+							each p, i in data.equipments.pages
+								li(class=data.equipments.currentPage == p ? 'active' : null)
+									a(href='?page=' + (p == '...' ? (i ? data.equipments.totalPages : 1) : p ))= p
+							if data.equipments.next
+								li: a(href='?page=' + data.equipments.next): span.glyphicon.glyphicon-chevron-right
+							else
+								li.disabled: a(href='?page=' + data.equipments.totalPages): span.entypo.glyphicon.glyphicon-chevron-right
+				else
+					if data.category
+						h3.text-muted  #{data.category.name}分类中还没有帖子.
+					else
+						h3.text-muted 还没有帖子.
+		

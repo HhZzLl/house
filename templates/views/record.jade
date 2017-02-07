@@ -1,0 +1,10 @@
+extends ./layouts/main
+
+block content
+	.container: .row
+		.col-sm-4.col-md-3
+			h3	文章分类
+			.list-group(style='margin-top:20px;')
+				a(href="/program").list-group-item javascript编程
+				a(href="#").list-group-item 心灵驿站
+				a(href="/plain").list-group-item 我的规划

@@ -3,8 +3,27 @@ extends ./layouts/main
 block content
 	.container: .row
 		.col-sm-4.col-md-3
-			h3	文章分类
-			.list-group(style='margin-top:20px;')
-				a(href="/program").list-group-item javascript编程
-				a(href="#").list-group-item 心灵驿站
-				a(href="/plain").list-group-item 我的规划
+			h3 文章分类
+				ul(class="nav in",id="side-menu")
+					.list-group(style='margin-top:20px;')
+					a(href="#").list-group-item 随笔分类
+					li
+						a(href="#",class="active",data-toggle="modal" data-target="#modal1")
+							i(class="fa fa-dashboard fa-fw") 
+							= "node、express、javascript"
+					li
+						a(href="#",class="active",data-toggle="modal" data-target="#modal1")
+							i(class="fa fa-dashboard fa-fw") 
+							= "git工具"
+					li
+						a(href="#",class="active",data-toggle="modal" data-target="#modal1")
+							i(class="fa fa-dashboard fa-fw") 
+							= "d3、bootstrap、jade"
+					li
+						a(href="#",class="active",data-toggle="modal" data-target="#modal1")
+							i(class="fa fa-dashboard fa-fw") 
+							= "mongodb"
+						a(href="#").list-group-item 心灵驿站
+						a(href="/plain").list-group-item 我的规划
+		.col-sm-8.col-md-9
+			block plain

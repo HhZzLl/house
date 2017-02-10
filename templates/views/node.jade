@@ -1,0 +1,21 @@
+extends record
+
+block plain
+	div(class="forFlow")
+		div(class="entrylist")
+			a(class="entrylistTitle" href="http://www.nodebeginner.org/index-zh-cn.html") Node入门
+		div(class="entrylistPostSummary")
+			div(class="c_b_p_desc")	摘要：#{data.node[0].content.brief}
+				a(href="http://www.nodebeginner.org/index-zh-cn.html" class="c_b_p_desc_readmore")阅读全文
+		hr
+		div(class="entrylist")
+			a(class="entrylistTitle" href="http://javascript.ruanyifeng.com/nodejs/express.html") Express框架
+		div(class="entrylistPostSummary")
+			div(class="c_b_p_desc")	摘要：#{data.node[1].content.brief}
+				a(href="http://javascript.ruanyifeng.com/nodejs/express.html" class="c_b_p_desc_readmore")阅读全文
+		hr
+		div(class="entrylist")
+			a(class="entrylistTitle" href="http://keystonejs.com/zh/docs/") KeystoneJS
+		div(class="entrylistPostSummary")
+			div(class="c_b_p_desc")	摘要：#{data.node[2].content.brief}
+				a(href="http://keystonejs.com/zh/docs/" class="c_b_p_desc_readmore")阅读全文

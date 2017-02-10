@@ -25,4 +25,7 @@ exports = module.exports = function(app) {
 	app.get('/eCategory/equipment/:equipment',routes.views.equipment);
 	app.get('/lRecord',routes.views.record);
 	app.get('/plain',routes.views.plain);
+	app.get('/node',routes.views.node);
+	app.get('/git',routes.views.git);
+	app.get('/D3',routes.views.d3);
 };

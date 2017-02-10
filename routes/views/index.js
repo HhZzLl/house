@@ -1,51 +1,33 @@
 var keystone = require('keystone');
-var exec = require('child_process').exec;
-var cmds = keystone.list('cmds');
-exports = module.exports = function(req, res) {
-	
-	var view = new keystone.View(req, res);
-	var locals = res.locals;
-	   
-	locals.section = 'home';
-	locals.data = {};
-	 
-	view.on('post',function(next){ 
-	    var p1 = req.body.p1;
-	    var p2 =req.body.p2;
-		var p3 =req.body.p3;
-		
-		//执行命令并存到数据库里
-        exec("p3 -"+p1+p2, function(error,stdout,stderr){
-			
-			var newcmds = new cmds.model({
-				  title: 'ps ',
-				  outstring: stdout,
-				  a1: p1,
-				  a2: p2
-		    });
-			newcmds.save(function(){
-					//从数据库里取数据
-				keystone.list('cmds').model.findOne().sort('-createdAt').exec(function(err,result){
-					 if (err) return console.err(err);
-					 console.log(result);
-					 locals.data = result;	
-					 next();		
-				});
-				
-				
-			});	
-		});
-		
-		
-	
-	});
-	
-	
-	// Render the view
-    view.render('cmd');
-		
+var middleware = require('./middleware');
+var importRoutes = keystone.importer(__dirname);
+
+// Common Middleware
+keystone.pre('routes', middleware.initLocals);
+keystone.pre('render', middleware.theme);
+keystone.pre('render', middleware.flashMessages);
+
+// Import Route Controllers
+var routes = {
+	views: importRoutes('./views')
 };
 
-
+// Setup Route Bindings
+exports = module.exports = function(app) {
 	
-	
+	// Views
+	app.get('/',routes.views.home);
+	app.get('/cmd',routes.views.index);
+	app.post('/cmd',routes.views.index);
+	app.get('/d3',routes.views.dataView);
+	app.get('/eCategory',routes.views.eCategory);
+	app.get('/eCategory/:equipment?',routes.views.eCategory);
+	app.get('/eCategory/equipment/:equipment',routes.views.equipment);
+	app.get('/lRecord',routes.views.record);
+	app.get('/plain',routes.views.plain);
+	app.get('/node',routes.views.node);
+	app.get('/git',routes.views.git);
+	app.get('/D3',routes.views.d3);
+	app.get('/mongo',routes.views.mongo);
+	app.get('/JS',routes.views.JS);
+};

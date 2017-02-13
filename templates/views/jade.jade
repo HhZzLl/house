@@ -1,0 +1,21 @@
+extends record
+
+block plain
+	div(class="forFlow")
+		div(class="entrylist")
+			a(class="entrylistTitle" href="https://d3js.org/") D3.js
+		div(class="entrylistPostSummary")
+			div(class="c_b_p_desc")	摘要：#{data.node[4].content.brief}
+				a(href="https://d3js.org/" class="c_b_p_desc_readmore")阅读全文
+		hr
+		div(class="entrylist")
+			a(class="entrylistTitle" href="http://v3.bootcss.com/getting-started/") Bootstrap模板
+		div(class="entrylistPostSummary")
+			div(class="c_b_p_desc")	摘要：#{data.node[5].content.brief}
+				a(href="http://v3.bootcss.com/getting-started/" class="c_b_p_desc_readmore")阅读全文
+		hr
+		div(class="entrylist")
+			a(class="entrylistTitle" href="http://jade-lang.com/") jade视图模板
+		div(class="entrylistPostSummary")
+			div(class="c_b_p_desc")	摘要：#{data.node[6].content.brief}
+				a(href="http://jade-lang.com/" class="c_b_p_desc_readmore")阅读全文

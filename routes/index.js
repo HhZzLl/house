@@ -27,5 +27,6 @@ exports = module.exports = function(app) {
 	app.get('/plain',routes.views.plain);
 	app.get('/node',routes.views.node);
 	app.get('/git',routes.views.git);
-	app.get('/D3',routes.views.d3);
+	app.get('/jade',routes.views.jade);
+	app.get('/mongodb',routes.views.mongodb)
 };

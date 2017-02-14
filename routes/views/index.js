@@ -1,33 +1,26 @@
 var keystone = require('keystone');
-var middleware = require('./middleware');
-var importRoutes = keystone.importer(__dirname);
+var exec = require('child_process').exec;
+var Cmd = keystone.list('cmds');
 
-// Common Middleware
-keystone.pre('routes', middleware.initLocals);
-keystone.pre('render', middleware.theme);
-keystone.pre('render', middleware.flashMessages);
-
-// Import Route Controllers
-var routes = {
-	views: importRoutes('./views')
-};
-
-// Setup Route Bindings
-exports = module.exports = function(app) {
+exports = module.exports = function(req,res){
+	var view = new keystone.View(req,res);
+	var locals = res.locals;
 	
-	// Views
-	app.get('/',routes.views.home);
-	app.get('/cmd',routes.views.index);
-	app.post('/cmd',routes.views.index);
-	app.get('/d3',routes.views.dataView);
-	app.get('/eCategory',routes.views.eCategory);
-	app.get('/eCategory/:equipment?',routes.views.eCategory);
-	app.get('/eCategory/equipment/:equipment',routes.views.equipment);
-	app.get('/lRecord',routes.views.record);
-	app.get('/plain',routes.views.plain);
-	app.get('/node',routes.views.node);
-	app.get('/git',routes.views.git);
-	app.get('/D3',routes.views.d3);
-	app.get('/mongo',routes.views.mongo);
-	app.get('/JS',routes.views.JS);
+	locals.data = {};
+	
+	view.on('post',function(next){
+		
+		
+			title =  req.params.p3,
+			a1 =  req.params.p1,
+			a2 =  req.params.p2
+			console.log(a1+a2);
+		
+		exec("title "+a1+a2,function(error,stdout,stderr){
+			locals.data = stdout;
+			console.log(locals.data);
+			next();
+		});
+	})
+	view.render('cmd');
 };

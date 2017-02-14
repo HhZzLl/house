@@ -9,36 +9,60 @@ block content
 			else
 				header
 					h3= data.equipment.name
-					h5 
-						if data.equipment.purchaseDate
-							| 购入日期：#{data.equipment._.purchaseDate.format('YYYY年M月D日')}
-							br
-						if data.equipment.amount
-							| 数量：#{data.equipment.amount}
-							br
-						if data.equipment.originValue
-							| 原值：#{data.equipment.originValue}
-							br
-						if data.equipment.serverLife
-							| 使用年限：#{data.equipment.serverLife} 
-							br
-						if data.equipment.remainRatio
-							| 残值率：#{data.equipment.remainRatio}
-							br
-						if data.equipment.annualDepreciation
-							| 年折旧额：#{data.equipment.annualDepreciation}
-							br
-						if data.equipment.monthDepreciation
-							|月折旧额：#{data.equipment.monthDepreciation}
-							br
-						if data.equipment.monthDepreciationRatio
-							|月折旧率：#{data.equipment.monthDepreciationRatio}
-							br
-						if data.equipment.accumulatedDepreciation
-							|累计折旧：#{data.equipment.accumulatedDepreciation}
-							br
-						if data.equipment.netValue
-							|净值：#{data.equipment.netValue}
-							br
-						if data.equipment.depreciationMonth
-							|已折旧月份：#{data.equipment.depreciationMonth}
+					hr
+					h5
+				table(border=1)
+					tr
+						tr
+							if data.equipment.purchaseDate
+							th	 购入日期
+							if data.equipment.amount
+							th	 数量
+							if data.equipment.originValue
+							th	 原值
+							if data.equipment.serverLife
+							th	 使用年限
+							if data.equipment.remainRatio
+							th	 残值率
+							if data.equipment.annualDepreciation
+							th	 年折旧额
+							if data.equipment.monthDepreciation
+							th	月折旧额
+							if data.equipment.monthDepreciationRatio
+							th	月折旧率
+							if data.equipment.accumulatedDepreciation
+							th	累计折旧
+							if data.equipment.netValue
+							th	净值
+							if data.equipment.depreciationMonth
+							th	已折旧月份
+						tr
+							th	#{data.equipment._.purchaseDate.format('YYYY年M月D日')}
+							th	#{data.equipment.amount}
+							th	#{data.equipment.originValue}
+							th	#{data.equipment.serverLife} 
+							th	#{data.equipment.remainRatio}
+							th	#{data.equipment.annualDepreciation}
+							th	#{data.equipment.monthDepreciation}
+							th	#{data.equipment.monthDepreciationRatio}
+							th	#{data.equipment.accumulatedDepreciation}
+							th	#{data.equipment.netValue}
+							th	#{data.equipment.depreciationMonth}
+						//if data.equipment.originValue
+						//th| 原值：#{data.equipment.originValue}
+						//if data.equipment.serverLife
+						//h| 使用年限：#{data.equipment.serverLife} 
+						//if data.equipment.remainRatio
+						//th| 残值率：#{data.equipment.remainRatio}
+						//if data.equipment.annualDepreciation
+						//th| 年折旧额：#{data.equipment.annualDepreciation}
+						//if data.equipment.monthDepreciation
+						//th|月折旧额：#{data.equipment.monthDepreciation}
+						//if data.equipment.monthDepreciationRatio
+						//th|月折旧率：#{data.equipment.monthDepreciationRatio}
+						//if data.equipment.accumulatedDepreciation
+						//th|累计折旧：#{data.equipment.accumulatedDepreciation}
+						//if data.equipment.netValue
+						//th|净值：#{data.equipment.netValue}
+						//if data.equipment.depreciationMonth
+						//th|已折旧月份：#{data.equipment.depreciationMonth}

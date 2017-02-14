@@ -3,7 +3,7 @@ extends ./layouts/main
 mixin post(ep)
 	.post(data-ks-editable=editable(equipment, { list: 'Equipment' }))
 		h4: a(href='/eCategory/equipment/' + ep.slug)= ep.name
-		
+	
 
 block thisContent
 	.container: .row
